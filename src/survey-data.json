@@ -1,0 +1,55 @@
+{
+  "summary": true,
+  "showPageNumber": true,
+  "showProgressBar": true,
+  "showBackButton": true,
+  "pages": [
+    {
+      "title": "Identity",
+      "inputs": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "email"
+        }
+      ]
+    },
+    {
+      "title": "Details",
+      "inputs": [
+        {
+          "name": "age",
+          "type": "range",
+          "options": [0, 150]
+        },
+        {
+          "name": "gender",
+          "type": "radio",
+          "options": ["Male", "Female"]
+        }
+      ]
+    },
+    {
+      "title": "Favorites",
+      "inputs": [
+        {
+          "name": "favorite_book",
+          "label": "Favorite Book",
+          "type": "input"
+        },
+        {
+          "name": "favorite_colors",
+          "label": "Favorite Colors",
+          "type": "checkbox",
+          "multiple": true,
+          "options": [
+            "red", "orange", "yellow", "green", "blue",
+            "purple", "pink", "white", "gray", "brown",
+            "black"
+          ]
+        }
+      ]
+    }
+  ]
+}
