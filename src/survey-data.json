@@ -3,15 +3,25 @@
   "showPageNumber": true,
   "showProgressBar": true,
   "showBackButton": true,
+  "showCloseButton": true,
+  "title": "Yieldstreet Survey",
+  "colors": {
+    "primary": "#4285f4",
+    "secondary": "#fff",
+    "fontColorPrimary": "#fff",
+    "fontColorSecondary": "#000"
+  },
   "pages": [
     {
       "title": "Identity",
       "inputs": [
         {
-          "name": "name"
+          "name": "name",
+          "type": "text"
         },
         {
-          "name": "email"
+          "name": "email",
+          "type": "email"
         }
       ]
     },
@@ -21,12 +31,14 @@
         {
           "name": "age",
           "type": "range",
-          "options": [0, 150]
+          "options": [0, 150],
+          "require": true
         },
         {
           "name": "gender",
           "type": "radio",
-          "options": ["Male", "Female"]
+          "options": ["Male", "Female"],
+          "require": true
         }
       ]
     },
@@ -36,13 +48,15 @@
         {
           "name": "favorite_book",
           "label": "Favorite Book",
-          "type": "input"
+          "type": "text",
+          "require": true
         },
         {
           "name": "favorite_colors",
           "label": "Favorite Colors",
           "type": "checkbox",
           "multiple": true,
+          "require": true,
           "options": [
             "red", "orange", "yellow", "green", "blue",
             "purple", "pink", "white", "gray", "brown",
