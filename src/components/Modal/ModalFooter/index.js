@@ -11,14 +11,14 @@ const ModalFooter = ({
 }) => (
   <ModalFooterContainer>
     {showProgressBar && (
-    <ProgressBar
-      completed={percent}
-      bgcolor={colors.primary}
-      borderRadius={0}
-      isLabelVisible={false}
-      height={5}
-      baseBgColor="transparent"
-    />
+      <ProgressBar
+        completed={percent}
+        bgcolor={colors.primary}
+        borderRadius="0px"
+        isLabelVisible={false}
+        height="5px"
+        baseBgColor="transparent"
+      />
     )}
     <FooterControlBtns>
       <div>

@@ -14,7 +14,7 @@ const SurveyPage = () => {
   return (
     <Page title={page.title} colors={config.colors} actualPage={actualPage}>
       {page.inputs.map((input) => (
-        <SurveyInput input={input} value={getValue(input)} />
+        <SurveyInput key={input.name} input={input} value={getValue(input)} />
       ))}
     </Page>
   );

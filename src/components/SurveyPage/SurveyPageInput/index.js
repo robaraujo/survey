@@ -1,5 +1,4 @@
 import React from 'react';
-import { shape, string } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { getInputLabel } from '../../../helpers';
 import { setAnswer } from '../../../store/survey';
@@ -8,6 +7,7 @@ import InputCheckboxes from './InputCheckboxes';
 import InputSelect from './InputSelect';
 import InputRadio from './InputRadio';
 import InputText from './InputText';
+import { inputType, inputValueType } from '../../../types/pageType';
 
 const SurveyPageInput = ({ input, value }) => {
   const { name, type, required = false } = input;
@@ -31,6 +31,7 @@ const SurveyPageInput = ({ input, value }) => {
           name={name}
           value={value}
           setAnswer={answer}
+          type={type}
         />
       )}
       {['select', 'range'].includes(type) && (
@@ -63,11 +64,8 @@ const SurveyPageInput = ({ input, value }) => {
 };
 
 SurveyPageInput.propTypes = {
-  input: shape({
-    name: string.isRequired,
-    label: string,
-  }).isRequired,
-  value: string.isRequired,
+  input: inputType.isRequired,
+  value: inputValueType.isRequired,
 };
 
 export default SurveyPageInput;

@@ -67,11 +67,6 @@ export const prevPage = () => (dispatch) => (
   dispatch({ type: Types.PREV_PAGE })
 );
 
-export const setAnswer = (name, value) => (dispatch) => {
-  console.log({ name, value });
-  return dispatch({ type: Types.SET_ANSWER, payload: { name, value } });
-};
-
-export const submit = () => (dispatch) => (
-  dispatch({ type: Types.SUBMIT })
+export const setAnswer = (name, value) => (dispatch) => (
+  dispatch({ type: Types.SET_ANSWER, payload: { name, value } })
 );

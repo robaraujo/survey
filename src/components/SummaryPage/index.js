@@ -14,7 +14,7 @@ const SummaryPage = () => {
     <Page title="Summary" colors={config.colors} actualPage={actualPage}>
       {config.pages.map((page) => (
         page.inputs.map((input) => (
-          <div>
+          <div key={input.name}>
             {getInputLabel(input)}
             :
             {' '}

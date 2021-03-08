@@ -1,13 +1,14 @@
 import {
-  shape, string, number, bool, arrayOf, oneOf,
+  shape, string, number, bool, arrayOf, oneOfType,
 } from 'prop-types';
 
 export const inputType = shape({
   name: string,
   type: string,
-  options: arrayOf(oneOf([string, number])),
+  options: arrayOf(oneOfType([string, number])),
   require: bool,
 });
+export const inputValueType = oneOfType([string, number, arrayOf(oneOfType([string, number]))]);
 
 export const pageType = shape({
   title: string,

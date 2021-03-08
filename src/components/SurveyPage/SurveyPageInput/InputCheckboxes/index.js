@@ -3,6 +3,7 @@ import { arrayOf, func, string } from 'prop-types';
 import React from 'react';
 import CheckboxGroup from 'react-checkbox-group';
 import { ucfirst } from '../../../../helpers';
+import { inputValueType } from '../../../../types/pageType';
 import { LabelContainer } from './index.style';
 
 const InputCheckboxes = ({
@@ -14,7 +15,7 @@ const InputCheckboxes = ({
     onChange={setAnswer}
   >
     {(Checkbox) => options.map((option) => (
-      <LabelContainer>
+      <LabelContainer key={option}>
         <Checkbox value={option} required={!value.length} />
         {' '}
         {ucfirst(option)}
@@ -25,7 +26,7 @@ const InputCheckboxes = ({
 
 InputCheckboxes.propTypes = {
   name: string.isRequired,
-  value: string.isRequired,
+  value: inputValueType.isRequired,
   setAnswer: func.isRequired,
   options: arrayOf(string).isRequired,
 };

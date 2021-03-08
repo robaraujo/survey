@@ -26,7 +26,7 @@ export default () => {
   };
 
   useEffect(() => {
-    dispatch(getConfig());
+    setTimeout(() => dispatch(getConfig()), 0);
   }, []);
 
   if (!pages.length) return false;

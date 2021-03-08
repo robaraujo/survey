@@ -12,7 +12,7 @@ const reducers = {
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: [],
+  whitelist: [surveyReducer],
 };
 const persistedReducer = persistCombineReducers(persistConfig, reducers);
 
