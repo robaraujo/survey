@@ -2,11 +2,12 @@ import surveyConfig from '../survey-data.json';
 
 // Action Types
 export const Types = {
-  GET_CONFIG: 'user/GET_CONFIG',
-  NEXT_PAGE: 'user/NEXT_PAGE',
-  PREV_PAGE: 'user/PREV_PAGE',
-  SET_ANSWER: 'user/SET_ANSWER',
-  SUBMIT: 'user/SUBMIT',
+  GET_CONFIG: 'survey/GET_CONFIG',
+  NEXT_PAGE: 'survey/NEXT_PAGE',
+  PREV_PAGE: 'survey/PREV_PAGE',
+  SET_ANSWER: 'survey/SET_ANSWER',
+  SUBMIT_SUCCESS: 'survey/SUBMIT_SUCCESS',
+  CLOSE: 'survey/CLOSE',
 };
 
 // Reducer
@@ -14,6 +15,8 @@ const initialState = {
   config: {},
   actualPage: 0,
   answers: {},
+  closed: false,
+  submitted: false,
 };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -40,11 +43,15 @@ export default function reducer(state = initialState, action) {
           [action.payload.name]: action.payload.value,
         },
       };
-    case Types.SUBMIT:
+    case Types.SUBMIT_SUCCESS:
       return {
         ...state,
-        actualPage: 0,
-        answers: {},
+        submitted: true,
+      };
+    case Types.CLOSE:
+      return {
+        ...state,
+        closed: true,
       };
     default:
       return state;
@@ -70,3 +77,17 @@ export const prevPage = () => (dispatch) => (
 export const setAnswer = (name, value) => (dispatch) => (
   dispatch({ type: Types.SET_ANSWER, payload: { name, value } })
 );
+
+// fake request time
+export const submit = () => (dispatch) => (
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+      dispatch({ type: Types.SUBMIT_SUCCESS });
+    }, 2000);
+  })
+);
+
+export const close = () => (dispatch) => {
+  dispatch({ type: Types.CLOSE });
+};

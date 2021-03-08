@@ -6,7 +6,7 @@ import App from './App';
 
 const rootElem = document.createElement('div');
 document.body.appendChild(rootElem);
-rootElem.setAttribute('id', 'ys-survey');
+rootElem.setAttribute('id', 'ys-survey-container');
 
 ReactDOM.render(
   <React.StrictMode>

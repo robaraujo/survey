@@ -23,6 +23,9 @@ const Button = styled.button`
       margin-left: 11px; 
     }
   }
+  &[disabled] {
+    opacity: 0.7;
+  }
   color: ${({ color }) => color || '#fff'};
   background-color: ${({ bg }) => bg || '##007bff'};
   ${({ inverted, bg }) => inverted && `

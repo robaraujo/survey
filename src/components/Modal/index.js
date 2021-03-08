@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { getConfig, nextPage, prevPage } from '../../store/survey';
+import {
+  getConfig, nextPage, prevPage, submit, close,
+} from '../../store/survey';
 import SurveyPage from '../SurveyPage';
 import SummaryPage from '../SummaryPage';
 import {
@@ -10,26 +11,33 @@ import {
 import ModalFooter from './ModalFooter';
 
 export default () => {
-  const { config, actualPage } = useSelector((state) => state.survey);
+  const {
+    config, actualPage, submitted, closed,
+  } = useSelector((state) => state.survey);
   const {
     pages = [], title, colors, showCloseButton, showBackButton, showProgressBar,
   } = config;
   const totalPages = pages.length;
-  const isSummary = actualPage < totalPages;
+  const isSummary = actualPage === totalPages;
   const percent = (actualPage * 100) / totalPages;
-
   const dispatch = useDispatch();
-  const isSummaryPage = pages.length === actualPage;
-  const handleSubmit = (event) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
     if (event) event.preventDefault();
-    dispatch(nextPage());
+
+    if (!isSummary) return dispatch(nextPage());
+
+    setLoading(true);
+    await dispatch(submit());
+    return setLoading(false);
   };
 
   useEffect(() => {
     setTimeout(() => dispatch(getConfig()), 0);
   }, []);
 
-  if (!pages.length) return false;
+  if (!pages.length || closed || submitted) return false;
 
   return (
     <ModalContainer>
@@ -37,13 +45,14 @@ export default () => {
         <ModalContent>
           <ModalHeader colors={colors}>
             {title}
-            {showCloseButton && <ModalClose />}
+            {showCloseButton && <ModalClose onClick={() => dispatch(close())} />}
           </ModalHeader>
           <ModalBody>
-            {!isSummaryPage && <SurveyPage />}
-            {isSummaryPage && <SummaryPage />}
+            {!isSummary && <SurveyPage />}
+            {isSummary && <SummaryPage />}
           </ModalBody>
           <ModalFooter
+            loading={loading}
             actualPage={actualPage}
             isSummary={isSummary}
             percent={percent}

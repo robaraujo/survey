@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 
 export const ModalContainer = styled.div`
-  border: 2px solid red;
   position: fixed;
   z-index: 1;
   left: 0;

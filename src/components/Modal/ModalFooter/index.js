@@ -1,13 +1,16 @@
 import React from 'react';
 import ProgressBar from '@ramonak/react-progress-bar';
-import { FaPaperPlane, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+import {
+  FaPaperPlane, FaChevronRight, FaChevronLeft,
+} from 'react-icons/fa';
+
 import { bool, func, number } from 'prop-types';
-import { ModalFooterContainer, FooterControlBtns } from './index.style';
+import { ModalFooterContainer, FooterControlBtns, FooterSpinner } from './index.style';
 import Button from '../../Button';
 import { colorsType } from '../../../types/generalTypes';
 
 const ModalFooter = ({
-  actualPage, isSummary, percent, showBackButton, showProgressBar, colors, onPrev,
+  actualPage, isSummary, percent, showBackButton, showProgressBar, colors, onPrev, loading,
 }) => (
   <ModalFooterContainer>
     {showProgressBar && (
@@ -23,22 +26,22 @@ const ModalFooter = ({
     <FooterControlBtns>
       <div>
         {showBackButton && actualPage > 0 && (
-        <Button inverted bg={colors.primary} onClick={onPrev} type="button">
+        <Button inverted bg={colors.primary} onClick={onPrev} type="button" disabled={loading}>
           <FaChevronLeft />
         </Button>
         )}
       </div>
       <div>
-        <Button bg={colors.primary} type="submit">
+        <Button bg={colors.primary} type="submit" disabled={loading}>
           {isSummary ? (
             <>
-              <span>Next</span>
-              <FaChevronRight />
+              <span>Submit</span>
+              {loading ? <FooterSpinner /> : <FaPaperPlane />}
             </>
           ) : (
             <>
-              <span>Submit</span>
-              <FaPaperPlane />
+              <span>Next</span>
+              <FaChevronRight />
             </>
           )}
         </Button>
@@ -56,6 +59,7 @@ ModalFooter.propTypes = {
   showProgressBar: bool.isRequired,
   colors: colorsType.isRequired,
   onPrev: func.isRequired,
+  loading: bool.isRequired,
 };
 
 export default ModalFooter;
