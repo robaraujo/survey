@@ -1,12 +1,16 @@
-import { node, string } from 'prop-types';
+import { node, number, string } from 'prop-types';
 import React from 'react';
-import { PageContainer, PageContent } from './index.style';
+import { PageContainer, PageContent, PageTitle } from './index.style';
+import { colorsType } from '../../types/generalTypes';
 
 const Page = ({
-  title, children,
+  title, children, colors, actualPage,
 }) => (
   <PageContainer>
-    <h1>{title}</h1>
+    <PageTitle borderColor={colors.primary}>
+      <span>{actualPage + 1}</span>
+      {title}
+    </PageTitle>
     <PageContent>
       {children}
     </PageContent>
@@ -15,7 +19,9 @@ const Page = ({
 
 Page.propTypes = {
   title: string.isRequired,
+  colors: colorsType.isRequired,
   children: node.isRequired,
+  actualPage: number.isRequired,
 };
 
 export default Page;

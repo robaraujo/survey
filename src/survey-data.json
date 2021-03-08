@@ -31,14 +31,14 @@
         {
           "name": "age",
           "type": "range",
-          "options": [0, 150],
-          "require": true
+          "range": [0, 150],
+          "required": true
         },
         {
           "name": "gender",
           "type": "radio",
           "options": ["Male", "Female"],
-          "require": true
+          "required": true
         }
       ]
     },
@@ -49,14 +49,14 @@
           "name": "favorite_book",
           "label": "Favorite Book",
           "type": "text",
-          "require": true
+          "required": true
         },
         {
           "name": "favorite_colors",
           "label": "Favorite Colors",
           "type": "checkbox",
           "multiple": true,
-          "require": true,
+          "required": true,
           "options": [
             "red", "orange", "yellow", "green", "blue",
             "purple", "pink", "white", "gray", "brown",

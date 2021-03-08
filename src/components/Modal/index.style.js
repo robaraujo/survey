@@ -46,5 +46,5 @@ export const ModalHeader = styled.div`
 `;
 
 export const ModalBody = styled.div`
-  padding: 10px;
+  padding: 30px 20px;
 `;
