@@ -19,3 +19,7 @@ You will also see any lint errors in the console.
 
 Builds the app for production to the `build/survey.dist.js` file.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+
+## Future work
+- Tests with Jest and Enzyme
+- Modal animations
