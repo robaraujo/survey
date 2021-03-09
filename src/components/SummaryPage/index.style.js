@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const SummaryPageContainer = styled.div`
-  border: 2px solid red;
+export const SummaryItemContainer = styled.div`
+  margin-bottom: 4px;
+  & b {
+    color: #1e1e1e;
+  }
 `;
-
-export default SummaryPageContainer;

@@ -34,7 +34,7 @@ export default () => {
   };
 
   useEffect(() => {
-    setTimeout(() => dispatch(getConfig()), 0);
+    dispatch(getConfig());
   }, []);
 
   if (!pages.length || closed || submitted) return false;

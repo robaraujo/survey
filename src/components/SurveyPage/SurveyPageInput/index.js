@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { getInputLabel } from '../../../helpers';
+import { getLabelText } from '../../../helpers';
 import { setAnswer } from '../../../store/survey';
 import { InputContainer, Label } from './index.style';
 import InputCheckboxes from './InputCheckboxes';
@@ -24,7 +24,7 @@ const SurveyPageInput = ({ input, value }) => {
 
   return (
     <InputContainer>
-      <Label htmlFor={`input-${name}`}>{getInputLabel(input)}</Label>
+      <Label htmlFor={`input-${name}`}>{getLabelText(input)}</Label>
       {['email', 'text'].includes(type) && (
         <InputText
           required={required}

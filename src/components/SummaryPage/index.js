@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Page from '../Page';
-import { getInputLabel } from '../../helpers';
+import { getLabelText } from '../../helpers';
+import { SummaryItemContainer } from './index.style';
 
 const SummaryPage = () => {
   const { config, answers, actualPage } = useSelector((state) => state.survey);
@@ -14,12 +15,12 @@ const SummaryPage = () => {
     <Page title="Summary" colors={config.colors} actualPage={actualPage}>
       {config.pages.map((page) => (
         page.inputs.map((input) => (
-          <div key={input.name}>
-            {getInputLabel(input)}
+          <SummaryItemContainer key={input.name}>
+            <b>{getLabelText(input)}</b>
             :
             {' '}
             {getAnswer(input)}
-          </div>
+          </SummaryItemContainer>
         ))
       ))}
     </Page>

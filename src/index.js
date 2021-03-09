@@ -8,9 +8,11 @@ const rootElem = document.createElement('div');
 document.body.appendChild(rootElem);
 rootElem.setAttribute('id', 'ys-survey-container');
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  rootElem,
-);
+setTimeout(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    rootElem,
+  );
+}, 2000);
